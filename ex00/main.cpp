@@ -12,12 +12,16 @@ int		main(void)
 		numbers.push_back(3);
 		numbers.push_back(4);
 		numbers.push_back(5);
-		::easyfind(numbers, 1);
-		::easyfind(numbers, 4);
-		::easyfind(numbers, 3);
 		try
 		{
+			::easyfind(numbers, 1);
+			std::cout << "Number in list<int>" << std::endl;
+			::easyfind(numbers, 4);
+			std::cout << "Number in list<int>" << std::endl;
+			::easyfind(numbers, 3);
+			std::cout << "Number in list<int>" << std::endl;
 			::easyfind(numbers, 7);
+			std::cout << "Number in list<int>" << std::endl;
 		}
 		catch (std::exception const &e)
 		{
@@ -32,12 +36,16 @@ int		main(void)
 		numbers.push_back(3);
 		numbers.push_back(4);
 		numbers.push_back(5);
-		::easyfind(numbers, 1);
-		::easyfind(numbers, 4);
-		::easyfind(numbers, 3);
 		try
 		{
+			::easyfind(numbers, 1);
+			std::cout << "Number in list<int>" << std::endl;
+			::easyfind(numbers, 4);
+			std::cout << "Number in list<int>" << std::endl;
+			::easyfind(numbers, 3);
+			std::cout << "Number in list<int>" << std::endl;
 			::easyfind(numbers, 7);
+			std::cout << "Number in list<int>" << std::endl;
 		}
 		catch (std::exception const &e)
 		{
