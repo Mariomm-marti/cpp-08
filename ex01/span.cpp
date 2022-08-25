@@ -1,3 +1,5 @@
+#include <algorithm>
+#include <functional>
 #include <vector>
 #include <stdexcept>
 #include <cmath>
@@ -74,34 +76,24 @@ void	Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterato
 
 unsigned long	Span::shortestSpan(void) const
 {
-	unsigned long	span;
-	unsigned long	tmp;
+	int copyNumbers[_usedSpace];
+	int result[_usedSpace - 1];
 
 	if (_usedSpace < 2)
 		throw std::underflow_error("span shortestSpan requires at least two numbers");
-	span = abs((*this)[0] - (*this)[1]);
-	for (unsigned int i = 1; i < _usedSpace - 1; i++)
-	{
-		tmp = abs((*this)[i] - (*this)[i + 1]);
-		if (tmp < span)
-			span = tmp;
-	}
-	return span;
+	std::copy(_numbers, _numbers + _usedSpace, copyNumbers);
+	std::sort(copyNumbers, copyNumbers + _usedSpace);
+	std::transform(copyNumbers + 1, copyNumbers + _usedSpace, copyNumbers, result, std::minus<int>());
+	return *std::min_element(result, result + _usedSpace);
 }
 
 unsigned long	Span::longestSpan(void) const
 {
-	int	span;
-	int	tmp;
+	int copyNumbers[_usedSpace];
 
 	if (_usedSpace < 2)
 		throw std::underflow_error("span longestSpan requires at least two numbers");
-	span = abs((*this)[0] - (*this)[1]);
-	for (unsigned int i = 1; i < _usedSpace - 1; i++)
-	{
-		tmp = abs((*this)[i] - (*this)[i + 1]);
-		if (tmp > span)
-			span = tmp;
-	}
-	return span;
+	std::copy(_numbers, _numbers + _usedSpace, copyNumbers);
+	std::sort(copyNumbers, copyNumbers + _usedSpace);
+	return *(copyNumbers + _usedSpace - 1) - *copyNumbers;
 }
